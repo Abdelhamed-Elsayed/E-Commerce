@@ -1,4 +1,4 @@
-// types/Product.ts
+
 export interface Product {
   id: number;
   title: string;
@@ -6,6 +6,6 @@ export interface Product {
   price: number;
   image: string;
   category: string;
-  storeName: string | null;      // ممكن تكون null
-  adminUsername: string | null;  // ممكن تكون null
+  storeName: string | null;     
+  adminUsername: string | null;   
 }
