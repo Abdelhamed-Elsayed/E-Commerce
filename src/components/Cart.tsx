@@ -15,7 +15,7 @@ export default function Cart() {
             <img src={item.image} className="h-16 w-16 object-contain" />
             <div className="flex-1 px-4">
               <p className="font-medium">{item.title}</p>
-              <p className="text-gray-500">${item.price}</p>
+              <p className="text-gray-500">{item.price}$</p>
             </div>
             <div className="flex items-center gap-2">
               <button
