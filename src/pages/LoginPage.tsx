@@ -17,7 +17,6 @@ export default function LoginPage() {
     if (isRegister) {
       const success = authStore.register(username, password, role);
       if (!success) return alert("Username already exists!");
-
       
       navigate("/");
     } else {
