@@ -7,12 +7,11 @@ const OrderPage: React.FC = () => {
   const { orders, setOrderStatus, deleteOrder } = useStore();
   const { role, currentUser } = useAuthStore();
 
-  // فلترة الأوردرات حسب الدور
   const filteredOrders = orders.filter(order => {
     if (role === "admin") {
-      // منتجات الأدمن داخل الأوردر
+      
       const myItems = order.items.filter(item => item.adminUsername === currentUser);
-      // لو عنده منتجات في الأوردر يرجعهم، لو مش عنده يشوف كل المنتجات (API products)
+      
       return myItems.length > 0 || order.items.some(item => !item.adminUsername);
     }
     if (role === "user") {
@@ -28,7 +27,7 @@ const OrderPage: React.FC = () => {
 
   const handleDelivered = (id: number) => {
     setOrderStatus(id, "delivered");
-    // تحديث localStorage
+
     const storedOrders = JSON.parse(localStorage.getItem("orders") || "[]");
     const updatedOrders = storedOrders.map((o: any) =>
       o.id === id ? { ...o, status: "delivered" } : o
@@ -55,7 +54,6 @@ const OrderPage: React.FC = () => {
           return (
             <div key={order.id} className="bg-white p-6 rounded-xl shadow space-y-4">
               
-              {/* STATUS */}
               <div className="flex justify-between items-center">
                 <span
                   className={`px-3 py-1 rounded-full text-sm font-medium ${
@@ -68,7 +66,6 @@ const OrderPage: React.FC = () => {
                 </span>
               </div>
 
-              {/* ITEMS */}
               <div className="space-y-2">
                 {visibleItems.map(item => (
                   <div key={item.id} className="flex items-center gap-4">
@@ -84,7 +81,6 @@ const OrderPage: React.FC = () => {
                 ))}
               </div>
 
-              {/* ACTIONS */}
               <div className="flex justify-end gap-3">
                 {role === "admin" && order.status === "pending" && (
                   <Button

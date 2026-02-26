@@ -35,7 +35,6 @@ export default function ProductDetails() {
         <p className="text-gray-600">{product.description}</p>
         <p className="text-xl font-semibold">${product.price}</p>
 
-        {/* Quantity selector with + and - */}
         <div className="flex items-center gap-2">
           <button
             onClick={decrease}

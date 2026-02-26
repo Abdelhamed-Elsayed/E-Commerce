@@ -12,15 +12,12 @@ export default function RegisterPage() {
   const handleRegister = () => {
     if (!username || !password) return toast.error("Enter username and password");
 
-    // get existing users from localStorage
     const storedUsers = JSON.parse(localStorage.getItem("users") || "[]");
 
-    // check if username exists
     if (storedUsers.some((u: any) => u.username === username)) {
       return toast.error("Username already exists");
     }
 
-    // add new user
     storedUsers.push({ username, password, role });
     localStorage.setItem("users", JSON.stringify(storedUsers));
 

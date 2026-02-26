@@ -101,7 +101,6 @@ const AdminProductCard: React.FC<Props> = ({ product, categories, onUpdate, onDe
             {product.category}
           </p>
 
-          {/* الأزرار دايمًا في الآخر */}
           <div className="flex gap-2 mt-auto pt-3">
             <button
               onClick={() => setIsEditing(true)}

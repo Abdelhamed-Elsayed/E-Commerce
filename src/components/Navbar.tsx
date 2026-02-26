@@ -15,12 +15,10 @@ export default function Navbar() {
   const [openMenu, setOpenMenu] = useState(false);
 
   const isLoginPage = location.pathname === "/login";
-  // const isRegisterPage = location.pathname === "/register";
   const isAdminPage = location.pathname === "/admin";
 
   const cartCount = role === "user" ? cart.length : 0;
 
-  // orderCount دائمًا رقم
   const orderCount = currentUser
     ? orders.filter((order) => {
         if (role === "user") return order.user === currentUser;
@@ -36,12 +34,12 @@ export default function Navbar() {
   const navItemStyle =
     "flex items-center gap-2 px-3 py-2  rounded-lg text-gray-700 hover:text-blue-600 hover:bg-gray-100 transition-all duration-200 cursor-pointer font-medium";
 
-  // أيقونة المستخدم أو الأدمن
   const userIcon = role === "admin" ? <FaUserShield /> : <FaUserCircle />;
 
   return (
     <nav className="bg-white shadow-md px-4 py-3 flex justify-between items-center relative">
-      {/* Logo */}
+     
+     
       <div className="flex items-center gap-3">
         <Link
           to="/"
@@ -59,7 +57,6 @@ export default function Navbar() {
         )}
       </div>
 
-      {/* Desktop Menu */}
       <div className="hidden md:flex items-center gap-6">
         {role === "admin" && currentUser && (
           <Link to="/admin" className={navItemStyle}>
@@ -123,7 +120,6 @@ export default function Navbar() {
         )}
       </div>
 
-      {/* Mobile Toggle */}
       <div className="md:hidden">
         <button
           onClick={() => setOpenMenu(!openMenu)}
@@ -133,7 +129,6 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Menu */}
       {openMenu && (
         <div className="absolute top-16 right-4 bg-white shadow-xl rounded-xl p-5 flex flex-col gap-2 w-56 md:hidden z-50">
           {currentUser && (

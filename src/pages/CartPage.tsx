@@ -25,7 +25,6 @@ export default function CartPage() {
     }
   };
 
-  // مسح العناصر المحددة
   const clearSelection = () => {
     if (selectedIds.length === 0) {
       toast.dismiss();
@@ -33,13 +32,12 @@ export default function CartPage() {
       return;
     }
 
-    selectedIds.forEach(id => removeFromCart(id)); // حذف العناصر من cart
+    selectedIds.forEach(id => removeFromCart(id)); 
     setSelectedIds([]);
     toast.dismiss();
     toast.success("Selected items cleared!");
   };
 
-  // مسح كل السلة
   const handleClearCart = () => {
     if (cart.length === 0) {
       toast.dismiss();
@@ -52,7 +50,6 @@ export default function CartPage() {
     toast.success("Cart cleared!");
   };
 
-  // عملية الدفع
   const handleCheckout = () => {
     if (selectedIds.length === 0) {
       toast.dismiss();
@@ -87,7 +84,6 @@ export default function CartPage() {
                 key={item.id}
                 className="flex flex-col sm:flex-row items-center justify-between p-4 bg-white rounded-xl shadow hover:shadow-md transition gap-4"
               >
-                {/* Checkbox + Image + Title */}
                 <div className="flex items-center gap-4 flex-1">
                   <input
                     type="checkbox"
@@ -108,7 +104,6 @@ export default function CartPage() {
                   </div>
                 </div>
 
-                {/* Quantity */}
                 <div className="flex items-center gap-2 mt-2 sm:mt-0">
                   <button
                     onClick={() => decreaseQuantity(item.id)}
@@ -125,7 +120,6 @@ export default function CartPage() {
                   </button>
                 </div>
 
-                {/* Remove */}
                 <button
                   onClick={() => {
                     removeFromCart(item.id);
@@ -140,7 +134,6 @@ export default function CartPage() {
             ))}
           </ul>
 
-          {/* Total + Buttons */}
           <div className="bg-white p-6 rounded-xl shadow flex flex-col md:flex-row md:justify-between md:items-center gap-4 mt-6">
             <div className="flex items-center gap-4 flex-wrap">
               <p className="text-xl font-bold">Total: ${total.toFixed(2)}</p>

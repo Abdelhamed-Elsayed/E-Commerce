@@ -14,14 +14,12 @@ const HomePage: React.FC = () => {
     loadApiProducts();
   }, []);
 
-  // فلترة المنتجات حسب البحث والفئة
   const filtered = [...apiProducts, ...adminProducts].filter(
     (p) =>
       p.title.toLowerCase().includes(search.toLowerCase()) &&
       (category ? p.category === category : true)
   );
 
-  // toast alert لو مفيش منتجات بعد الفلترة
   useEffect(() => {
     if (filtered.length === 0) {
       toast.error("No products found 🔍");

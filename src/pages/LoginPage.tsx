@@ -18,7 +18,7 @@ export default function LoginPage() {
       const success = authStore.register(username, password, role);
       if (!success) return alert("Username already exists!");
 
-      // بعد التسجيل يتم التوجيه على Home
+      
       navigate("/");
     } else {
       const success = authStore.login(username, password);

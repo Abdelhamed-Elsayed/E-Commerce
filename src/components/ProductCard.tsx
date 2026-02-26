@@ -31,7 +31,6 @@ const ProductCard: React.FC<Props> = ({ product }) => {
         </p>
       </Link>
 
-      {/* Quantity selector */}
       <div className="flex items-center gap-2 mt-2">
         <button
           onClick={decrease}

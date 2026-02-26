@@ -1,4 +1,3 @@
-// AuthPage.tsx
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import useAuthStore from "../store/useAuthStore";
@@ -16,7 +15,7 @@ export default function AuthPage() {
   const [error, setError] = useState("");
 
   const handleSubmit = () => {
-    setError(""); // امسح أي رسالة قديمة
+    setError("");
 
     if (!username || !password) {
       setError("Please enter username and password.");
@@ -30,7 +29,6 @@ export default function AuthPage() {
         return;
       }
 
-      // جلب الدور من localStorage
       const storedUsers = JSON.parse(localStorage.getItem("users") || "[]");
       const userRole = storedUsers.find((u: any) => u.username === username)?.role;
       navigate(userRole === "admin" ? "/admin" : "/");
@@ -46,14 +44,13 @@ export default function AuthPage() {
   };
 
   const handleInputChange = (setter: (val: string) => void, value: string) => {
-    setError(""); // امسح الرسالة عند الكتابة
+    setError("");
     setter(value);
   };
 
   return (
     <div className="flex flex-col items-center mt-20 p-6 max-w-sm mx-auto bg-gray-50 rounded-xl shadow-md space-y-4">
-      
-      {/* Error message */}
+
       {error && (
         <div className="bg-red-100 text-red-700 px-4 py-2 rounded w-full text-center">
           {error}
